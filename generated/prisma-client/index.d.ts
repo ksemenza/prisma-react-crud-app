@@ -255,12 +255,12 @@ export type ProjectOrderByInput =
 export type TagOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC"
-  | "name_ASC"
-  | "name_DESC"
   | "isUsed_ASC"
   | "isUsed_DESC";
 
@@ -444,6 +444,20 @@ export interface TagWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -460,20 +474,6 @@ export interface TagWhereInput {
   updatedAt_lte?: Maybe<DateTimeInput>;
   updatedAt_gt?: Maybe<DateTimeInput>;
   updatedAt_gte?: Maybe<DateTimeInput>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
   isUsed?: Maybe<Boolean>;
   isUsed_not?: Maybe<Boolean>;
   projects_every?: Maybe<ProjectTagElementWhereInput>;
@@ -486,6 +486,7 @@ export interface TagWhereInput {
 
 export type ProjectWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+  name?: Maybe<String>;
 }>;
 
 export type ProjectTagElementWhereUniqueInput = AtLeastOne<{
@@ -1152,17 +1153,17 @@ export interface ProjectTagElementNullablePromise
 
 export interface Tag {
   id: ID_Output;
+  name: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  name: String;
   isUsed: Boolean;
 }
 
 export interface TagPromise extends Promise<Tag>, Fragmentable {
   id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
-  name: () => Promise<String>;
   isUsed: () => Promise<Boolean>;
   projects: <T = FragmentableArray<ProjectTagElement>>(args?: {
     where?: ProjectTagElementWhereInput;
@@ -1179,9 +1180,9 @@ export interface TagSubscription
   extends Promise<AsyncIterator<Tag>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  name: () => Promise<AsyncIterator<String>>;
   isUsed: () => Promise<AsyncIterator<Boolean>>;
   projects: <T = Promise<AsyncIterator<ProjectTagElementSubscription>>>(args?: {
     where?: ProjectTagElementWhereInput;
@@ -1196,9 +1197,9 @@ export interface TagSubscription
 
 export interface TagNullablePromise extends Promise<Tag | null>, Fragmentable {
   id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
-  name: () => Promise<String>;
   isUsed: () => Promise<Boolean>;
   projects: <T = FragmentableArray<ProjectTagElement>>(args?: {
     where?: ProjectTagElementWhereInput;
@@ -1645,9 +1646,9 @@ export interface TagSubscriptionPayloadSubscription
 
 export interface TagPreviousValues {
   id: ID_Output;
+  name: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
-  name: String;
   isUsed: Boolean;
 }
 
@@ -1655,9 +1656,9 @@ export interface TagPreviousValuesPromise
   extends Promise<TagPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
-  name: () => Promise<String>;
   isUsed: () => Promise<Boolean>;
 }
 
@@ -1665,9 +1666,9 @@ export interface TagPreviousValuesSubscription
   extends Promise<AsyncIterator<TagPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  name: () => Promise<AsyncIterator<String>>;
   isUsed: () => Promise<AsyncIterator<Boolean>>;
 }
 

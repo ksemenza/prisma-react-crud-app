@@ -729,6 +729,7 @@ input ProjectWhereInput {
 
 input ProjectWhereUniqueInput {
   id: ID
+  name: String
 }
 
 type Query {
@@ -756,9 +757,9 @@ type Subscription {
 
 type Tag {
   id: ID!
+  name: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  name: String!
   isUsed: Boolean!
   projects(where: ProjectTagElementWhereInput, orderBy: ProjectTagElementOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProjectTagElement!]
 }
@@ -795,21 +796,21 @@ type TagEdge {
 enum TagOrderByInput {
   id_ASC
   id_DESC
+  name_ASC
+  name_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
-  name_ASC
-  name_DESC
   isUsed_ASC
   isUsed_DESC
 }
 
 type TagPreviousValues {
   id: ID!
+  name: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  name: String!
   isUsed: Boolean!
 }
 
@@ -874,6 +875,20 @@ input TagWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -890,20 +905,6 @@ input TagWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
   isUsed: Boolean
   isUsed_not: Boolean
   projects_every: ProjectTagElementWhereInput

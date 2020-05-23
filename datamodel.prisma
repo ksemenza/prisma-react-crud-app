@@ -1,17 +1,17 @@
 
 type Tag {
 id: ID! @id
+name: String! @unique
 createdAt: DateTime! @createdAt
 updatedAt: DateTime! @updatedAt
-name: String! @unique
-isUsed:Boolean! @default(value: false)
-projects:[ProjectTagElement] @relation(name:"TagElement")
+isUsed: Boolean! @default(value: false)
+projects: [ProjectTagElement] @relation(name:"TagElement")
     
 }
 
 type Project {
   id: ID! @id
-  name: String!
+  name: String! @unique
   tags: [ProjectTagElement] @relation(name: "TagsByProject")
   notes: [Note!]! @relation(name: "NotesByProject")
   createdAt: DateTime! @createdAt
@@ -23,7 +23,7 @@ type Project {
 type ProjectTagElement {
 id: ID! @id
 project: Project! @relation(name: "TagsByProject")
-tag: Tag! @relation(name: "TagElement")
+tag: Tag! @unique @relation(name: "TagElement")
 createdAt: DateTime! @createdAt
 updatedAt: DateTime! @updatedAt
 }
