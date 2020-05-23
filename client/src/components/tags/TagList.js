@@ -1,15 +1,15 @@
 import React from 'react'
 
 
-const ProjectCard = () => {
+const TagList = () => {
 
 
     return (
         <div>
-            <p>Project Card</p>
+            <p>Tag List</p>
         </div>
     )
     
 }
 
-export default ProjectCard
+export default TagList

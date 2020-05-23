@@ -1,15 +1,15 @@
 import React from 'react'
 
 
-const ProjectCard = () => {
+const NoteModal = () => {
 
 
     return (
         <div>
-            <p>Project Card</p>
+            <p>Note Modal</p>
         </div>
     )
     
 }
 
-export default ProjectCard
+export default NoteModal

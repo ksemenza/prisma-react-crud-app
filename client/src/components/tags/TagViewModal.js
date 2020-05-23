@@ -1,15 +1,15 @@
 import React from 'react'
 
 
-const ProjectCard = () => {
+const ViewTagModal = () => {
 
 
     return (
         <div>
-            <p>Project Card</p>
+            <p>Tag Modal</p>
         </div>
     )
     
 }
 
-export default ProjectCard
+export default ViewTagModal

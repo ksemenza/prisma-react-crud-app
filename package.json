@@ -4,7 +4,9 @@
   "description": "Prisma React App with CRUD operations based off an app called Mission Control assoicated with Lambda School Labs 23",
   "main": "index.js",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.5",
     "apollo-boost": "^0.4.9",
+    "apollo-server": "^2.13.1",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "react-apollo": "^3.1.5"
@@ -12,7 +14,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"prisma deploy"
+    "start": "prisma deploy"
   },
   "repository": {
     "type": "git",
