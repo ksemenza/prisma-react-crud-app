@@ -1,0 +1,39 @@
+
+type Tag {
+id: ID! @id
+createdAt: DateTime! @createdAt
+updatedAt: DateTime! @updatedAt
+name: String! @unique
+isUsed:Boolean! @default(value: false)
+projects:[ProjectTagElement] @relation(name:"TagElement")
+    
+}
+
+type Project {
+  id: ID! @id
+  name: String!
+  tags: [ProjectTagElement] @relation(name: "TagsByProject")
+  notes: [Note!]! @relation(name: "NotesByProject")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+
+
+type ProjectTagElement {
+id: ID! @id
+project: Project! @relation(name: "TagsByProject")
+tag: Tag! @relation(name: "TagElement")
+createdAt: DateTime! @createdAt
+updatedAt: DateTime! @updatedAt
+}
+
+
+type Note {
+  id: ID! @id
+  topic: String!
+  content: String!
+  project: Project! @relation(name: "NotesByProject")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}

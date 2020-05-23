@@ -1,0 +1,27 @@
+{
+  "name": "prisma-react-crud-app",
+  "version": "1.0.0",
+  "description": "Prisma React App with CRUD operations based off an app called Mission Control assoicated with Lambda School Labs 23",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-boost": "^0.4.9",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "react-apollo": "^3.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"prisma deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksemenza/prisma-react-crud-app.git"
+  },
+  "author": "Kim Semenza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksemenza/prisma-react-crud-app/issues"
+  },
+  "homepage": "https://github.com/ksemenza/prisma-react-crud-app#readme"
+}
