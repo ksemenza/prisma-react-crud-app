@@ -1,15 +1,15 @@
 import React from 'react'
 
 
-const ProjectContainer = () => {
+const ProjectModal = () => {
 
 
     return (
         <div>
-            <p>Project Container</p>
+            <p>Project Modal</p>
         </div>
     )
     
 }
 
-export default ProjectContainer
+export default ProjectModal
