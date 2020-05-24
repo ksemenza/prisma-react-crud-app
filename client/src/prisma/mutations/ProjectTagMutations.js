@@ -1,7 +1,7 @@
 import { gql} from 'apollo-boost'
 
 //CREATE PROJECT TAG
-export default CREATE_PROJECT_TAG = gql`
+export const CREATE_PROJECT_TAG = gql`
 mutation createProjectTag(
     $projectTag: ProjectTagCreateInput!
   ) {
@@ -21,7 +21,7 @@ mutation createProjectTag(
   }`;
 
 //UPDATE PROJECT TAG
-export default UPDATE_PROJECT_TAG = gql`
+export const UPDATE_PROJECT_TAG = gql`
 mutation updateThisProjectTagElement(
     $projectTagElement: ProjectTagElementWhereUniqueInput!
     $data: ProjectTagElementUpdateInput!

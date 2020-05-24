@@ -1,6 +1,6 @@
 import { gql } from "apollo-boost";
 
-export default PROJECT_TAGS_VIEW_ALL = gql`
+export const PROJECT_TAGS_VIEW_ALL = gql`
   query projectTagElements {
     project {
       id
@@ -13,7 +13,7 @@ export default PROJECT_TAGS_VIEW_ALL = gql`
   }
 `;
 
-export default PROJECT_TAGS_GET_SINGLE = gql`
+export const PROJECT_TAGS_GET_SINGLE = gql`
   query GetSingleProjectTagElement($projectTagId: ID!) {
     projectTagElement(where: { id: $projectTagId }) {
       id
@@ -32,7 +32,7 @@ export default PROJECT_TAGS_GET_SINGLE = gql`
 `;
 
 
-export default PROJECT_TAGS_GET_ALL = gql`
+export const PROJECT_TAGS_GET_ALL = gql`
   query GetAllProjectTagElements($id: ID!) {
     projectTagElements(where: { id: $id }) {
       id

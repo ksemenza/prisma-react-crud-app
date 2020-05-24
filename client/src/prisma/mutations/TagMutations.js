@@ -1,7 +1,7 @@
 import { gql} from 'apollo-boost'
 
 //CREATE TAG
-export default CREATE_NEW_TAG = gql`
+export const CREATE_NEW_TAG = gql`
 mutation createTag(
     $tag: TagCreateInput!
   ) {
@@ -21,7 +21,7 @@ mutation createTag(
 
 
 //UPDATE TAG
-export default UPDATE_TAG = gql`
+export const UPDATE_TAG = gql`
 mutation updateThisTag(
     $tag: TagWhereUniqueInput!
     $data: TagUpdateInput!

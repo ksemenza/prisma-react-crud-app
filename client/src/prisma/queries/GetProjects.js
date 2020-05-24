@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 
-export default PROJECT_VIEW_ALL = gql`
+export const PROJECT_VIEW_ALL = gql`
 query projects($id: ID!){
       id
       name
@@ -16,10 +16,10 @@ query projects($id: ID!){
       }
       createdAt
       updatedAt
-    }`;
+    }`
 
 
-export default PROJECT_GET_ALL = gql`
+export const PROJECT_GET_ALL = gql`
 query GetAllProjects($id: ID!){
     projects(where:{id: $id}) {
       id
@@ -38,7 +38,7 @@ query GetAllProjects($id: ID!){
       updatedAt
     }
   }`;
-export default PROJECT_GET_SINGLE = gql`
+export const PROJECT_GET_SINGLE = gql`
 query GetSingleProject($projectId: ID!){
     project(where:{id: $projectId}) {
       id

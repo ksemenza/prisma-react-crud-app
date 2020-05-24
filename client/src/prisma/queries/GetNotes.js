@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 
-export default NOTE_VIEW_ALL = gql`
+export const NOTE_VIEW_ALL = gql`
 query notes {
       id
       topic 
@@ -13,7 +13,7 @@ query notes {
       updatedAt
     }`;
 
-export default NOTE_GET_ALL = gql`
+export const NOTE_GET_ALL = gql`
 query GetAllNotes($id: ID!) {
     notes(where:{id:$id}) {
         id
@@ -28,7 +28,7 @@ query GetAllNotes($id: ID!) {
     }
   }`;
 
-export default NOTE_GET_SINGLE = gql`
+export const NOTE_GET_SINGLE = gql`
 query GetSingleNote($noteId: ID!) {
     note(where:{id:$noteId}) {
         id

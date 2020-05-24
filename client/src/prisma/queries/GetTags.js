@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 
-export default TAG_VIEW_ALL = gql`
+export const TAG_VIEW_ALL = gql`
 query tags{
       id
       name
@@ -15,7 +15,7 @@ query tags{
       updatedAt
     }`;
 
-export default TAG_GET_ALL = gql`
+export const TAG_GET_ALL = gql`
 query GetAllTags($id: ID!) {
     tags(where:{id:$id}) {
       id
@@ -32,7 +32,7 @@ query GetAllTags($id: ID!) {
     }
   }`;
 
-export default TAG_GET_SINGLE = gql`
+export const TAG_GET_SINGLE = gql`
 query GetSingleTag($tag: ID!) {
     tag(where:{id:$tag}) {
       id

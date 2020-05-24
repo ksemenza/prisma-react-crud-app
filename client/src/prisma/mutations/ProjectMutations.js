@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 //CREATE PROJECT
-export default CREATE_NEW_PROJECT = gql`
+export const CREATE_NEW_PROJECT = gql`
   mutation createProject($project: ProjectCreateInput!) {
     createProject(data: $project) {
       id
@@ -21,7 +21,7 @@ export default CREATE_NEW_PROJECT = gql`
 `;
 
 //UPDATE PROJECT
-export default UPDATE_PROJECT = gql`
+export const UPDATE_PROJECT = gql`
   mutation updateThisProject(
     $project: ProjectWhereUniqueInput!
     $data: ProjectUpdateInput!

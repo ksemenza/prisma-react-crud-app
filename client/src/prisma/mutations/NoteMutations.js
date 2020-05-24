@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 //CREATE NOTE
-export default CREATE_NEW_NOTE = gql`
+export const CREATE_NEW_NOTE = gql`
   mutation createNote($note: NoteCreateInput!) {
     createNote(data: $note) {
       id
@@ -17,7 +17,7 @@ export default CREATE_NEW_NOTE = gql`
 
 
 //UPDATE NOTE
-export default UPDATE_NOTE = gql`
+export const UPDATE_NOTE = gql`
   mutation updateThisNote(
     $note: NoteWhereUniqueInput!
     $data: NoteUpdateInput!
