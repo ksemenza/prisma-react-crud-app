@@ -1,0 +1,25 @@
+# import Query.project from "generated/prisma.graphql"
+# import Query.projects from "generated/prisma.graphql"
+# import Mutation.createProject from "generated/prisma.graphql"
+# import Mutation.updateProject from "generated/prisma.graphql"
+
+# import Query.note from "generated/prisma.graphql"
+# import Query.notes from "generated/prisma.graphql"
+# import Mutation.createNote from "generated/prisma.graphql"
+# import Mutation.updateNote from "generated/prisma.graphql"
+# import Mutation.deleteNote from "generated/prisma.graphql"
+
+# import Query.tags from "generated/prisma.graphql"
+# import Query.tag from "generated/prisma.graphql"
+
+# import Mutation.createTag from "generated/prisma.graphql"
+# import Mutation.updateTag from "generated/prisma.graphql"
+# import Mutation.deleteTag from "generated/prisma.graphql"
+
+# import Query.projectTagElement from "generated/prisma.graphql"
+# import Query.projectTagElement from "generated/prisma.graphql"
+
+# import Mutation.createProjectTagElement from "generated/prisma.graphql"
+# import Mutation.deleteProjectTagElement from "generated/prisma.graphql"
+
+# import Query.* from "api.graphql"

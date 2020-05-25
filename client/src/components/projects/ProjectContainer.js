@@ -11,13 +11,9 @@ import ProjectViewModal from './ProjectViewModal'
 import ProjectAddModal from './ProjectAddModal'
 
 const ProjectContainer = (props) => {
+console.log("props")
 
-    console.log(viewProject)
-    console.log(viewProjectTag)
-console.log(props.match.params)
-
-
-    return (
+return (
         <div>
             <p>Project Container</p>
         </div>

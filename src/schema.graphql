@@ -1,0 +1,103 @@
+const { gql } = require(`apollo-server`);
+
+const typeDefs = gql`
+type Query {
+  project(projectId:ID!): Project
+  projects(filter:String):[Project]
+
+  tag(tagId:ID!): Tag
+  tags(filter:String):[Tag]
+
+  note(noteId:ID!): Note
+  notes(filter:String):[Note]
+
+  user(id:ID!): User
+  users(filter:String):[User]
+
+}
+
+type Mutation {
+# PROJECT MUTATIONS
+#TODO Delete or uncomment  25 & 26 same 
+# createProject(name: String!, projectId:ID!): Project!
+  createProject(data:CreateProjectInput!): Project!
+  updateProject(projectId: ID!, name: String!): Project!
+  deleteProject(projectId:ID!):Project!
+
+# TAG MUTATIONS
+#TODO Delete or uncomment  32 & 33 same
+#   createTag(name: String!, tagId: ID!): Tag
+  createTag(data:CreateTagInput): Tag
+  updateTag(tagId: ID!, name: String!, isUsed:Boolean): Tag!
+  deleteTag(tagId:ID!):Tag!
+  markTagAsUsed(tagId:ID!):Tag
+
+# NOTES MUTATION
+#TODO Delete or uncomment  40 & 41 same
+# createNote(topic: String!, content:String!, noteId: ID!): Note!
+createNote(data:CreateNoteInput!): Note!
+updateNote(noteId: ID!, topic: String!, content:String!: Note!
+deleteNote(noteId:ID!):Tag!
+
+#USERS MUTATIONS
+#TODO Delete or uncomment  47 & 48 same
+# createUser(name: String!, email:String!, id:ID!): User!
+createUser(name: String!, email:String!, id:ID!): User!
+updateUser(id: ID!, name: String!, email:String!) : User!
+deleteUser(id:ID!):User!
+
+#PROJECT TAG ELEMENT MUTATIONS
+createProjectTagElement(projectTagElementId:ID!): ProjectTagElement!
+deleteProjectTagElement(projectTagElementId:ID!):ProjectTagElement!
+
+#USED WITH PROJECT TAG ELEMENT TO ATTACH PROJECTS AND TAGS
+# addProjectToTag(projectId:ID!, name:String):Project!
+# addTagToProject(tagId:ID!, name:String):Tag!
+}
+
+type User {
+  id: ID! @id
+  name:String! 
+  email:String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Tag {
+tagId: ID! @id
+name: String! @unique
+createdAt: DateTime! @createdAt
+updatedAt: DateTime! @updatedAt
+isUsed: Boolean! @default(value: false)
+projects: [ProjectTagElement!]! @relation(name:"TagElement")
+    
+}
+
+type Project {
+  projectId: ID! @id
+  name: String! @unique
+  tags: [ProjectTagElement!]! @relation(name: "TagsByProject")
+  notes: [Note] @relation(name: "NotesByProject")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type ProjectTagElement {
+projectTagElementId: ID! @id
+project: Project! @relation(name: "TagsByProject")
+tag: Tag! @relation(name: "TagElement")
+createdAt: DateTime! @createdAt
+updatedAt: DateTime! @updatedAt
+}
+
+
+type Note {
+  noteId: ID! @id
+  topic: String!
+  content: String!
+  project: Project! @relation(name: "NotesByProject")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+`;
+module.exports = typeDefs;

@@ -1,44 +1,41 @@
 type User {
   id: ID! @id
-  name: String!
-  email: String!
+  name:String! 
+  email:String! @unique
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
-
 type Tag {
-id: ID! @id
+tagId: ID! @id
 name: String! @unique
 createdAt: DateTime! @createdAt
 updatedAt: DateTime! @updatedAt
 isUsed: Boolean! @default(value: false)
-projects: [ProjectTagElement] @relation(name:"TagElement")
+project: [ProjectTagElement] @relation(name:"TagElement")
     
 }
 
 type Project {
-  id: ID! @id
+  projectId: ID! @id
   name: String! @unique
-  tags: [ProjectTagElement] @relation(name: "TagsByProject")
-  notes: [Note!]! @relation(name: "NotesByProject")
+  tag: [ProjectTagElement] @unique @relation(name: "TagsByProject")
+  notes: [Note] @relation(name: "NotesByProject")
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
-
-
 type ProjectTagElement {
-id: ID! @id
-project: Project! @relation(name: "TagsByProject")
-tag: Tag! @unique @relation(name: "TagElement")
+projectTagElementId: ID! @id
+projects: Project @unique @relation(link:INLINE, name: "TagsByProject")
+tags: Tag @unique @relation(link:INLINE , name: "TagElement")
 createdAt: DateTime! @createdAt
 updatedAt: DateTime! @updatedAt
 }
 
 
 type Note {
-  id: ID! @id
+  noteId: ID! @id
   topic: String!
   content: String!
   project: Project! @relation(name: "NotesByProject")

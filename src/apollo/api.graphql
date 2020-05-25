@@ -1,0 +1,37 @@
+extend type Query {
+    me: User
+}
+
+type User {
+    id: ID!
+    name:String!
+    email: String!
+    project:[Project!]
+}
+
+type Tag {
+tagId: ID! @id
+name: String! @unique
+createdAt: DateTime! @createdAt
+updatedAt: DateTime! @updatedAt
+isUsed: Boolean! @default(value: false)
+projects: [ProjectTagElement!]! @relation(name:"TagElement")
+    
+}
+
+type Project {
+  projectId: ID! @id
+  name: String! @unique
+  tags: [ProjectTagElement!]! @relation(name: "TagsByProject")
+  notes: [Note] @relation(name: "NotesByProject")
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type ProjectTagElement {
+projectTagElementId: ID! @id
+project: Project! @relation(name: "TagsByProject")
+tag: Tag! @relation(name: "TagElement")
+createdAt: DateTime! @createdAt
+updatedAt: DateTime! @updatedAt
+}

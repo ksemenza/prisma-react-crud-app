@@ -74,7 +74,7 @@ interface Node {
 }
 
 type Note {
-  id: ID!
+  noteId: ID!
   topic: String!
   content: String!
   project: Project!
@@ -89,7 +89,7 @@ type NoteConnection {
 }
 
 input NoteCreateInput {
-  id: ID
+  noteId: ID
   topic: String!
   content: String!
   project: ProjectCreateOneWithoutNotesInput!
@@ -101,7 +101,7 @@ input NoteCreateManyWithoutProjectInput {
 }
 
 input NoteCreateWithoutProjectInput {
-  id: ID
+  noteId: ID
   topic: String!
   content: String!
 }
@@ -112,8 +112,8 @@ type NoteEdge {
 }
 
 enum NoteOrderByInput {
-  id_ASC
-  id_DESC
+  noteId_ASC
+  noteId_DESC
   topic_ASC
   topic_DESC
   content_ASC
@@ -125,7 +125,7 @@ enum NoteOrderByInput {
 }
 
 type NotePreviousValues {
-  id: ID!
+  noteId: ID!
   topic: String!
   content: String!
   createdAt: DateTime!
@@ -133,20 +133,20 @@ type NotePreviousValues {
 }
 
 input NoteScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
+  noteId: ID
+  noteId_not: ID
+  noteId_in: [ID!]
+  noteId_not_in: [ID!]
+  noteId_lt: ID
+  noteId_lte: ID
+  noteId_gt: ID
+  noteId_gte: ID
+  noteId_contains: ID
+  noteId_not_contains: ID
+  noteId_starts_with: ID
+  noteId_not_starts_with: ID
+  noteId_ends_with: ID
+  noteId_not_ends_with: ID
   topic: String
   topic_not: String
   topic_in: [String!]
@@ -264,20 +264,20 @@ input NoteUpsertWithWhereUniqueWithoutProjectInput {
 }
 
 input NoteWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
+  noteId: ID
+  noteId_not: ID
+  noteId_in: [ID!]
+  noteId_not_in: [ID!]
+  noteId_lt: ID
+  noteId_lte: ID
+  noteId_gt: ID
+  noteId_gte: ID
+  noteId_contains: ID
+  noteId_not_contains: ID
+  noteId_starts_with: ID
+  noteId_not_starts_with: ID
+  noteId_ends_with: ID
+  noteId_not_ends_with: ID
   topic: String
   topic_not: String
   topic_in: [String!]
@@ -329,7 +329,7 @@ input NoteWhereInput {
 }
 
 input NoteWhereUniqueInput {
-  id: ID
+  noteId: ID
 }
 
 type PageInfo {
@@ -340,9 +340,9 @@ type PageInfo {
 }
 
 type Project {
-  id: ID!
+  projectId: ID!
   name: String!
-  tags(where: ProjectTagElementWhereInput, orderBy: ProjectTagElementOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProjectTagElement!]
+  tag(where: ProjectTagElementWhereInput, orderBy: ProjectTagElementOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProjectTagElement!]
   notes(where: NoteWhereInput, orderBy: NoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Note!]
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -355,9 +355,9 @@ type ProjectConnection {
 }
 
 input ProjectCreateInput {
-  id: ID
+  projectId: ID
   name: String!
-  tags: ProjectTagElementCreateManyWithoutProjectInput
+  tag: ProjectTagElementCreateManyWithoutProjectsInput
   notes: NoteCreateManyWithoutProjectInput
 }
 
@@ -366,19 +366,19 @@ input ProjectCreateOneWithoutNotesInput {
   connect: ProjectWhereUniqueInput
 }
 
-input ProjectCreateOneWithoutTagsInput {
-  create: ProjectCreateWithoutTagsInput
+input ProjectCreateOneWithoutTagInput {
+  create: ProjectCreateWithoutTagInput
   connect: ProjectWhereUniqueInput
 }
 
 input ProjectCreateWithoutNotesInput {
-  id: ID
+  projectId: ID
   name: String!
-  tags: ProjectTagElementCreateManyWithoutProjectInput
+  tag: ProjectTagElementCreateManyWithoutProjectsInput
 }
 
-input ProjectCreateWithoutTagsInput {
-  id: ID
+input ProjectCreateWithoutTagInput {
+  projectId: ID
   name: String!
   notes: NoteCreateManyWithoutProjectInput
 }
@@ -389,8 +389,8 @@ type ProjectEdge {
 }
 
 enum ProjectOrderByInput {
-  id_ASC
-  id_DESC
+  projectId_ASC
+  projectId_DESC
   name_ASC
   name_DESC
   createdAt_ASC
@@ -400,7 +400,7 @@ enum ProjectOrderByInput {
 }
 
 type ProjectPreviousValues {
-  id: ID!
+  projectId: ID!
   name: String!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -425,9 +425,9 @@ input ProjectSubscriptionWhereInput {
 }
 
 type ProjectTagElement {
-  id: ID!
-  project: Project!
-  tag: Tag!
+  projectTagElementId: ID!
+  projects: Project
+  tags: Tag
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -439,29 +439,29 @@ type ProjectTagElementConnection {
 }
 
 input ProjectTagElementCreateInput {
-  id: ID
-  project: ProjectCreateOneWithoutTagsInput!
-  tag: TagCreateOneWithoutProjectsInput!
+  projectTagElementId: ID
+  projects: ProjectCreateOneWithoutTagInput
+  tags: TagCreateOneWithoutProjectInput
 }
 
-input ProjectTagElementCreateManyWithoutProjectInput {
-  create: [ProjectTagElementCreateWithoutProjectInput!]
+input ProjectTagElementCreateManyWithoutProjectsInput {
+  create: [ProjectTagElementCreateWithoutProjectsInput!]
   connect: [ProjectTagElementWhereUniqueInput!]
 }
 
-input ProjectTagElementCreateManyWithoutTagInput {
-  create: [ProjectTagElementCreateWithoutTagInput!]
+input ProjectTagElementCreateManyWithoutTagsInput {
+  create: [ProjectTagElementCreateWithoutTagsInput!]
   connect: [ProjectTagElementWhereUniqueInput!]
 }
 
-input ProjectTagElementCreateWithoutProjectInput {
-  id: ID
-  tag: TagCreateOneWithoutProjectsInput!
+input ProjectTagElementCreateWithoutProjectsInput {
+  projectTagElementId: ID
+  tags: TagCreateOneWithoutProjectInput
 }
 
-input ProjectTagElementCreateWithoutTagInput {
-  id: ID
-  project: ProjectCreateOneWithoutTagsInput!
+input ProjectTagElementCreateWithoutTagsInput {
+  projectTagElementId: ID
+  projects: ProjectCreateOneWithoutTagInput
 }
 
 type ProjectTagElementEdge {
@@ -470,8 +470,8 @@ type ProjectTagElementEdge {
 }
 
 enum ProjectTagElementOrderByInput {
-  id_ASC
-  id_DESC
+  projectTagElementId_ASC
+  projectTagElementId_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -479,26 +479,26 @@ enum ProjectTagElementOrderByInput {
 }
 
 type ProjectTagElementPreviousValues {
-  id: ID!
+  projectTagElementId: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
 input ProjectTagElementScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
+  projectTagElementId: ID
+  projectTagElementId_not: ID
+  projectTagElementId_in: [ID!]
+  projectTagElementId_not_in: [ID!]
+  projectTagElementId_lt: ID
+  projectTagElementId_lte: ID
+  projectTagElementId_gt: ID
+  projectTagElementId_gte: ID
+  projectTagElementId_contains: ID
+  projectTagElementId_not_contains: ID
+  projectTagElementId_starts_with: ID
+  projectTagElementId_not_starts_with: ID
+  projectTagElementId_ends_with: ID
+  projectTagElementId_not_ends_with: ID
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -539,79 +539,79 @@ input ProjectTagElementSubscriptionWhereInput {
 }
 
 input ProjectTagElementUpdateInput {
-  project: ProjectUpdateOneRequiredWithoutTagsInput
-  tag: TagUpdateOneRequiredWithoutProjectsInput
+  projects: ProjectUpdateOneWithoutTagInput
+  tags: TagUpdateOneWithoutProjectInput
 }
 
-input ProjectTagElementUpdateManyWithoutProjectInput {
-  create: [ProjectTagElementCreateWithoutProjectInput!]
+input ProjectTagElementUpdateManyWithoutProjectsInput {
+  create: [ProjectTagElementCreateWithoutProjectsInput!]
   delete: [ProjectTagElementWhereUniqueInput!]
   connect: [ProjectTagElementWhereUniqueInput!]
   set: [ProjectTagElementWhereUniqueInput!]
   disconnect: [ProjectTagElementWhereUniqueInput!]
-  update: [ProjectTagElementUpdateWithWhereUniqueWithoutProjectInput!]
-  upsert: [ProjectTagElementUpsertWithWhereUniqueWithoutProjectInput!]
+  update: [ProjectTagElementUpdateWithWhereUniqueWithoutProjectsInput!]
+  upsert: [ProjectTagElementUpsertWithWhereUniqueWithoutProjectsInput!]
   deleteMany: [ProjectTagElementScalarWhereInput!]
 }
 
-input ProjectTagElementUpdateManyWithoutTagInput {
-  create: [ProjectTagElementCreateWithoutTagInput!]
+input ProjectTagElementUpdateManyWithoutTagsInput {
+  create: [ProjectTagElementCreateWithoutTagsInput!]
   delete: [ProjectTagElementWhereUniqueInput!]
   connect: [ProjectTagElementWhereUniqueInput!]
   set: [ProjectTagElementWhereUniqueInput!]
   disconnect: [ProjectTagElementWhereUniqueInput!]
-  update: [ProjectTagElementUpdateWithWhereUniqueWithoutTagInput!]
-  upsert: [ProjectTagElementUpsertWithWhereUniqueWithoutTagInput!]
+  update: [ProjectTagElementUpdateWithWhereUniqueWithoutTagsInput!]
+  upsert: [ProjectTagElementUpsertWithWhereUniqueWithoutTagsInput!]
   deleteMany: [ProjectTagElementScalarWhereInput!]
 }
 
-input ProjectTagElementUpdateWithoutProjectDataInput {
-  tag: TagUpdateOneRequiredWithoutProjectsInput
+input ProjectTagElementUpdateWithoutProjectsDataInput {
+  tags: TagUpdateOneWithoutProjectInput
 }
 
-input ProjectTagElementUpdateWithoutTagDataInput {
-  project: ProjectUpdateOneRequiredWithoutTagsInput
+input ProjectTagElementUpdateWithoutTagsDataInput {
+  projects: ProjectUpdateOneWithoutTagInput
 }
 
-input ProjectTagElementUpdateWithWhereUniqueWithoutProjectInput {
+input ProjectTagElementUpdateWithWhereUniqueWithoutProjectsInput {
   where: ProjectTagElementWhereUniqueInput!
-  data: ProjectTagElementUpdateWithoutProjectDataInput!
+  data: ProjectTagElementUpdateWithoutProjectsDataInput!
 }
 
-input ProjectTagElementUpdateWithWhereUniqueWithoutTagInput {
+input ProjectTagElementUpdateWithWhereUniqueWithoutTagsInput {
   where: ProjectTagElementWhereUniqueInput!
-  data: ProjectTagElementUpdateWithoutTagDataInput!
+  data: ProjectTagElementUpdateWithoutTagsDataInput!
 }
 
-input ProjectTagElementUpsertWithWhereUniqueWithoutProjectInput {
+input ProjectTagElementUpsertWithWhereUniqueWithoutProjectsInput {
   where: ProjectTagElementWhereUniqueInput!
-  update: ProjectTagElementUpdateWithoutProjectDataInput!
-  create: ProjectTagElementCreateWithoutProjectInput!
+  update: ProjectTagElementUpdateWithoutProjectsDataInput!
+  create: ProjectTagElementCreateWithoutProjectsInput!
 }
 
-input ProjectTagElementUpsertWithWhereUniqueWithoutTagInput {
+input ProjectTagElementUpsertWithWhereUniqueWithoutTagsInput {
   where: ProjectTagElementWhereUniqueInput!
-  update: ProjectTagElementUpdateWithoutTagDataInput!
-  create: ProjectTagElementCreateWithoutTagInput!
+  update: ProjectTagElementUpdateWithoutTagsDataInput!
+  create: ProjectTagElementCreateWithoutTagsInput!
 }
 
 input ProjectTagElementWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  project: ProjectWhereInput
-  tag: TagWhereInput
+  projectTagElementId: ID
+  projectTagElementId_not: ID
+  projectTagElementId_in: [ID!]
+  projectTagElementId_not_in: [ID!]
+  projectTagElementId_lt: ID
+  projectTagElementId_lte: ID
+  projectTagElementId_gt: ID
+  projectTagElementId_gte: ID
+  projectTagElementId_contains: ID
+  projectTagElementId_not_contains: ID
+  projectTagElementId_starts_with: ID
+  projectTagElementId_not_starts_with: ID
+  projectTagElementId_ends_with: ID
+  projectTagElementId_not_ends_with: ID
+  projects: ProjectWhereInput
+  tags: TagWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -634,12 +634,12 @@ input ProjectTagElementWhereInput {
 }
 
 input ProjectTagElementWhereUniqueInput {
-  id: ID
+  projectTagElementId: ID
 }
 
 input ProjectUpdateInput {
   name: String
-  tags: ProjectTagElementUpdateManyWithoutProjectInput
+  tag: ProjectTagElementUpdateManyWithoutProjectsInput
   notes: NoteUpdateManyWithoutProjectInput
 }
 
@@ -654,19 +654,21 @@ input ProjectUpdateOneRequiredWithoutNotesInput {
   connect: ProjectWhereUniqueInput
 }
 
-input ProjectUpdateOneRequiredWithoutTagsInput {
-  create: ProjectCreateWithoutTagsInput
-  update: ProjectUpdateWithoutTagsDataInput
-  upsert: ProjectUpsertWithoutTagsInput
+input ProjectUpdateOneWithoutTagInput {
+  create: ProjectCreateWithoutTagInput
+  update: ProjectUpdateWithoutTagDataInput
+  upsert: ProjectUpsertWithoutTagInput
+  delete: Boolean
+  disconnect: Boolean
   connect: ProjectWhereUniqueInput
 }
 
 input ProjectUpdateWithoutNotesDataInput {
   name: String
-  tags: ProjectTagElementUpdateManyWithoutProjectInput
+  tag: ProjectTagElementUpdateManyWithoutProjectsInput
 }
 
-input ProjectUpdateWithoutTagsDataInput {
+input ProjectUpdateWithoutTagDataInput {
   name: String
   notes: NoteUpdateManyWithoutProjectInput
 }
@@ -676,26 +678,26 @@ input ProjectUpsertWithoutNotesInput {
   create: ProjectCreateWithoutNotesInput!
 }
 
-input ProjectUpsertWithoutTagsInput {
-  update: ProjectUpdateWithoutTagsDataInput!
-  create: ProjectCreateWithoutTagsInput!
+input ProjectUpsertWithoutTagInput {
+  update: ProjectUpdateWithoutTagDataInput!
+  create: ProjectCreateWithoutTagInput!
 }
 
 input ProjectWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
+  projectId: ID
+  projectId_not: ID
+  projectId_in: [ID!]
+  projectId_not_in: [ID!]
+  projectId_lt: ID
+  projectId_lte: ID
+  projectId_gt: ID
+  projectId_gte: ID
+  projectId_contains: ID
+  projectId_not_contains: ID
+  projectId_starts_with: ID
+  projectId_not_starts_with: ID
+  projectId_ends_with: ID
+  projectId_not_ends_with: ID
   name: String
   name_not: String
   name_in: [String!]
@@ -710,9 +712,9 @@ input ProjectWhereInput {
   name_not_starts_with: String
   name_ends_with: String
   name_not_ends_with: String
-  tags_every: ProjectTagElementWhereInput
-  tags_some: ProjectTagElementWhereInput
-  tags_none: ProjectTagElementWhereInput
+  tag_every: ProjectTagElementWhereInput
+  tag_some: ProjectTagElementWhereInput
+  tag_none: ProjectTagElementWhereInput
   notes_every: NoteWhereInput
   notes_some: NoteWhereInput
   notes_none: NoteWhereInput
@@ -738,7 +740,7 @@ input ProjectWhereInput {
 }
 
 input ProjectWhereUniqueInput {
-  id: ID
+  projectId: ID
   name: String
 }
 
@@ -770,12 +772,12 @@ type Subscription {
 }
 
 type Tag {
-  id: ID!
+  tagId: ID!
   name: String!
   createdAt: DateTime!
   updatedAt: DateTime!
   isUsed: Boolean!
-  projects(where: ProjectTagElementWhereInput, orderBy: ProjectTagElementOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProjectTagElement!]
+  project(where: ProjectTagElementWhereInput, orderBy: ProjectTagElementOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProjectTagElement!]
 }
 
 type TagConnection {
@@ -785,19 +787,19 @@ type TagConnection {
 }
 
 input TagCreateInput {
-  id: ID
+  tagId: ID
   name: String!
   isUsed: Boolean
-  projects: ProjectTagElementCreateManyWithoutTagInput
+  project: ProjectTagElementCreateManyWithoutTagsInput
 }
 
-input TagCreateOneWithoutProjectsInput {
-  create: TagCreateWithoutProjectsInput
+input TagCreateOneWithoutProjectInput {
+  create: TagCreateWithoutProjectInput
   connect: TagWhereUniqueInput
 }
 
-input TagCreateWithoutProjectsInput {
-  id: ID
+input TagCreateWithoutProjectInput {
+  tagId: ID
   name: String!
   isUsed: Boolean
 }
@@ -808,8 +810,8 @@ type TagEdge {
 }
 
 enum TagOrderByInput {
-  id_ASC
-  id_DESC
+  tagId_ASC
+  tagId_DESC
   name_ASC
   name_DESC
   createdAt_ASC
@@ -821,7 +823,7 @@ enum TagOrderByInput {
 }
 
 type TagPreviousValues {
-  id: ID!
+  tagId: ID!
   name: String!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -849,7 +851,7 @@ input TagSubscriptionWhereInput {
 input TagUpdateInput {
   name: String
   isUsed: Boolean
-  projects: ProjectTagElementUpdateManyWithoutTagInput
+  project: ProjectTagElementUpdateManyWithoutTagsInput
 }
 
 input TagUpdateManyMutationInput {
@@ -857,38 +859,40 @@ input TagUpdateManyMutationInput {
   isUsed: Boolean
 }
 
-input TagUpdateOneRequiredWithoutProjectsInput {
-  create: TagCreateWithoutProjectsInput
-  update: TagUpdateWithoutProjectsDataInput
-  upsert: TagUpsertWithoutProjectsInput
+input TagUpdateOneWithoutProjectInput {
+  create: TagCreateWithoutProjectInput
+  update: TagUpdateWithoutProjectDataInput
+  upsert: TagUpsertWithoutProjectInput
+  delete: Boolean
+  disconnect: Boolean
   connect: TagWhereUniqueInput
 }
 
-input TagUpdateWithoutProjectsDataInput {
+input TagUpdateWithoutProjectDataInput {
   name: String
   isUsed: Boolean
 }
 
-input TagUpsertWithoutProjectsInput {
-  update: TagUpdateWithoutProjectsDataInput!
-  create: TagCreateWithoutProjectsInput!
+input TagUpsertWithoutProjectInput {
+  update: TagUpdateWithoutProjectDataInput!
+  create: TagCreateWithoutProjectInput!
 }
 
 input TagWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
+  tagId: ID
+  tagId_not: ID
+  tagId_in: [ID!]
+  tagId_not_in: [ID!]
+  tagId_lt: ID
+  tagId_lte: ID
+  tagId_gt: ID
+  tagId_gte: ID
+  tagId_contains: ID
+  tagId_not_contains: ID
+  tagId_starts_with: ID
+  tagId_not_starts_with: ID
+  tagId_ends_with: ID
+  tagId_not_ends_with: ID
   name: String
   name_not: String
   name_in: [String!]
@@ -921,16 +925,16 @@ input TagWhereInput {
   updatedAt_gte: DateTime
   isUsed: Boolean
   isUsed_not: Boolean
-  projects_every: ProjectTagElementWhereInput
-  projects_some: ProjectTagElementWhereInput
-  projects_none: ProjectTagElementWhereInput
+  project_every: ProjectTagElementWhereInput
+  project_some: ProjectTagElementWhereInput
+  project_none: ProjectTagElementWhereInput
   AND: [TagWhereInput!]
   OR: [TagWhereInput!]
   NOT: [TagWhereInput!]
 }
 
 input TagWhereUniqueInput {
-  id: ID
+  tagId: ID
   name: String
 }
 
@@ -1074,6 +1078,7 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  email: String
 }
 `
       }

@@ -1,0 +1,1077 @@
+type AggregateNote {
+  count: Int!
+}
+
+type AggregateProject {
+  count: Int!
+}
+
+type AggregateProjectTagElement {
+  count: Int!
+}
+
+type AggregateTag {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+scalar DateTime
+
+scalar Long
+
+type Mutation {
+  createNote(data: NoteCreateInput!): Note!
+  updateNote(data: NoteUpdateInput!, where: NoteWhereUniqueInput!): Note
+  updateManyNotes(data: NoteUpdateManyMutationInput!, where: NoteWhereInput): BatchPayload!
+  upsertNote(where: NoteWhereUniqueInput!, create: NoteCreateInput!, update: NoteUpdateInput!): Note!
+  deleteNote(where: NoteWhereUniqueInput!): Note
+  deleteManyNotes(where: NoteWhereInput): BatchPayload!
+  createProject(data: ProjectCreateInput!): Project!
+  updateProject(data: ProjectUpdateInput!, where: ProjectWhereUniqueInput!): Project
+  updateManyProjects(data: ProjectUpdateManyMutationInput!, where: ProjectWhereInput): BatchPayload!
+  upsertProject(where: ProjectWhereUniqueInput!, create: ProjectCreateInput!, update: ProjectUpdateInput!): Project!
+  deleteProject(where: ProjectWhereUniqueInput!): Project
+  deleteManyProjects(where: ProjectWhereInput): BatchPayload!
+  createProjectTagElement(data: ProjectTagElementCreateInput!): ProjectTagElement!
+  updateProjectTagElement(data: ProjectTagElementUpdateInput!, where: ProjectTagElementWhereUniqueInput!): ProjectTagElement
+  upsertProjectTagElement(where: ProjectTagElementWhereUniqueInput!, create: ProjectTagElementCreateInput!, update: ProjectTagElementUpdateInput!): ProjectTagElement!
+  deleteProjectTagElement(where: ProjectTagElementWhereUniqueInput!): ProjectTagElement
+  deleteManyProjectTagElements(where: ProjectTagElementWhereInput): BatchPayload!
+  createTag(data: TagCreateInput!): Tag!
+  updateTag(data: TagUpdateInput!, where: TagWhereUniqueInput!): Tag
+  updateManyTags(data: TagUpdateManyMutationInput!, where: TagWhereInput): BatchPayload!
+  upsertTag(where: TagWhereUniqueInput!, create: TagCreateInput!, update: TagUpdateInput!): Tag!
+  deleteTag(where: TagWhereUniqueInput!): Tag
+  deleteManyTags(where: TagWhereInput): BatchPayload!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type Note {
+  noteId: ID!
+  topic: String!
+  content: String!
+  project: Project!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type NoteConnection {
+  pageInfo: PageInfo!
+  edges: [NoteEdge]!
+  aggregate: AggregateNote!
+}
+
+input NoteCreateInput {
+  noteId: ID
+  topic: String!
+  content: String!
+  project: ProjectCreateOneWithoutNotesInput!
+}
+
+input NoteCreateManyWithoutProjectInput {
+  create: [NoteCreateWithoutProjectInput!]
+  connect: [NoteWhereUniqueInput!]
+}
+
+input NoteCreateWithoutProjectInput {
+  noteId: ID
+  topic: String!
+  content: String!
+}
+
+type NoteEdge {
+  node: Note!
+  cursor: String!
+}
+
+enum NoteOrderByInput {
+  noteId_ASC
+  noteId_DESC
+  topic_ASC
+  topic_DESC
+  content_ASC
+  content_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type NotePreviousValues {
+  noteId: ID!
+  topic: String!
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input NoteScalarWhereInput {
+  noteId: ID
+  noteId_not: ID
+  noteId_in: [ID!]
+  noteId_not_in: [ID!]
+  noteId_lt: ID
+  noteId_lte: ID
+  noteId_gt: ID
+  noteId_gte: ID
+  noteId_contains: ID
+  noteId_not_contains: ID
+  noteId_starts_with: ID
+  noteId_not_starts_with: ID
+  noteId_ends_with: ID
+  noteId_not_ends_with: ID
+  topic: String
+  topic_not: String
+  topic_in: [String!]
+  topic_not_in: [String!]
+  topic_lt: String
+  topic_lte: String
+  topic_gt: String
+  topic_gte: String
+  topic_contains: String
+  topic_not_contains: String
+  topic_starts_with: String
+  topic_not_starts_with: String
+  topic_ends_with: String
+  topic_not_ends_with: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [NoteScalarWhereInput!]
+  OR: [NoteScalarWhereInput!]
+  NOT: [NoteScalarWhereInput!]
+}
+
+type NoteSubscriptionPayload {
+  mutation: MutationType!
+  node: Note
+  updatedFields: [String!]
+  previousValues: NotePreviousValues
+}
+
+input NoteSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: NoteWhereInput
+  AND: [NoteSubscriptionWhereInput!]
+  OR: [NoteSubscriptionWhereInput!]
+  NOT: [NoteSubscriptionWhereInput!]
+}
+
+input NoteUpdateInput {
+  topic: String
+  content: String
+  project: ProjectUpdateOneRequiredWithoutNotesInput
+}
+
+input NoteUpdateManyDataInput {
+  topic: String
+  content: String
+}
+
+input NoteUpdateManyMutationInput {
+  topic: String
+  content: String
+}
+
+input NoteUpdateManyWithoutProjectInput {
+  create: [NoteCreateWithoutProjectInput!]
+  delete: [NoteWhereUniqueInput!]
+  connect: [NoteWhereUniqueInput!]
+  set: [NoteWhereUniqueInput!]
+  disconnect: [NoteWhereUniqueInput!]
+  update: [NoteUpdateWithWhereUniqueWithoutProjectInput!]
+  upsert: [NoteUpsertWithWhereUniqueWithoutProjectInput!]
+  deleteMany: [NoteScalarWhereInput!]
+  updateMany: [NoteUpdateManyWithWhereNestedInput!]
+}
+
+input NoteUpdateManyWithWhereNestedInput {
+  where: NoteScalarWhereInput!
+  data: NoteUpdateManyDataInput!
+}
+
+input NoteUpdateWithoutProjectDataInput {
+  topic: String
+  content: String
+}
+
+input NoteUpdateWithWhereUniqueWithoutProjectInput {
+  where: NoteWhereUniqueInput!
+  data: NoteUpdateWithoutProjectDataInput!
+}
+
+input NoteUpsertWithWhereUniqueWithoutProjectInput {
+  where: NoteWhereUniqueInput!
+  update: NoteUpdateWithoutProjectDataInput!
+  create: NoteCreateWithoutProjectInput!
+}
+
+input NoteWhereInput {
+  noteId: ID
+  noteId_not: ID
+  noteId_in: [ID!]
+  noteId_not_in: [ID!]
+  noteId_lt: ID
+  noteId_lte: ID
+  noteId_gt: ID
+  noteId_gte: ID
+  noteId_contains: ID
+  noteId_not_contains: ID
+  noteId_starts_with: ID
+  noteId_not_starts_with: ID
+  noteId_ends_with: ID
+  noteId_not_ends_with: ID
+  topic: String
+  topic_not: String
+  topic_in: [String!]
+  topic_not_in: [String!]
+  topic_lt: String
+  topic_lte: String
+  topic_gt: String
+  topic_gte: String
+  topic_contains: String
+  topic_not_contains: String
+  topic_starts_with: String
+  topic_not_starts_with: String
+  topic_ends_with: String
+  topic_not_ends_with: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  project: ProjectWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [NoteWhereInput!]
+  OR: [NoteWhereInput!]
+  NOT: [NoteWhereInput!]
+}
+
+input NoteWhereUniqueInput {
+  noteId: ID
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Project {
+  projectId: ID!
+  name: String!
+  tag(where: ProjectTagElementWhereInput, orderBy: ProjectTagElementOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProjectTagElement!]
+  notes(where: NoteWhereInput, orderBy: NoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Note!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ProjectConnection {
+  pageInfo: PageInfo!
+  edges: [ProjectEdge]!
+  aggregate: AggregateProject!
+}
+
+input ProjectCreateInput {
+  projectId: ID
+  name: String!
+  tag: ProjectTagElementCreateManyWithoutProjectsInput
+  notes: NoteCreateManyWithoutProjectInput
+}
+
+input ProjectCreateOneWithoutNotesInput {
+  create: ProjectCreateWithoutNotesInput
+  connect: ProjectWhereUniqueInput
+}
+
+input ProjectCreateOneWithoutTagInput {
+  create: ProjectCreateWithoutTagInput
+  connect: ProjectWhereUniqueInput
+}
+
+input ProjectCreateWithoutNotesInput {
+  projectId: ID
+  name: String!
+  tag: ProjectTagElementCreateManyWithoutProjectsInput
+}
+
+input ProjectCreateWithoutTagInput {
+  projectId: ID
+  name: String!
+  notes: NoteCreateManyWithoutProjectInput
+}
+
+type ProjectEdge {
+  node: Project!
+  cursor: String!
+}
+
+enum ProjectOrderByInput {
+  projectId_ASC
+  projectId_DESC
+  name_ASC
+  name_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProjectPreviousValues {
+  projectId: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ProjectSubscriptionPayload {
+  mutation: MutationType!
+  node: Project
+  updatedFields: [String!]
+  previousValues: ProjectPreviousValues
+}
+
+input ProjectSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProjectWhereInput
+  AND: [ProjectSubscriptionWhereInput!]
+  OR: [ProjectSubscriptionWhereInput!]
+  NOT: [ProjectSubscriptionWhereInput!]
+}
+
+type ProjectTagElement {
+  projectTagElementId: ID!
+  projects: Project
+  tags: Tag
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ProjectTagElementConnection {
+  pageInfo: PageInfo!
+  edges: [ProjectTagElementEdge]!
+  aggregate: AggregateProjectTagElement!
+}
+
+input ProjectTagElementCreateInput {
+  projectTagElementId: ID
+  projects: ProjectCreateOneWithoutTagInput
+  tags: TagCreateOneWithoutProjectInput
+}
+
+input ProjectTagElementCreateManyWithoutProjectsInput {
+  create: [ProjectTagElementCreateWithoutProjectsInput!]
+  connect: [ProjectTagElementWhereUniqueInput!]
+}
+
+input ProjectTagElementCreateManyWithoutTagsInput {
+  create: [ProjectTagElementCreateWithoutTagsInput!]
+  connect: [ProjectTagElementWhereUniqueInput!]
+}
+
+input ProjectTagElementCreateWithoutProjectsInput {
+  projectTagElementId: ID
+  tags: TagCreateOneWithoutProjectInput
+}
+
+input ProjectTagElementCreateWithoutTagsInput {
+  projectTagElementId: ID
+  projects: ProjectCreateOneWithoutTagInput
+}
+
+type ProjectTagElementEdge {
+  node: ProjectTagElement!
+  cursor: String!
+}
+
+enum ProjectTagElementOrderByInput {
+  projectTagElementId_ASC
+  projectTagElementId_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ProjectTagElementPreviousValues {
+  projectTagElementId: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input ProjectTagElementScalarWhereInput {
+  projectTagElementId: ID
+  projectTagElementId_not: ID
+  projectTagElementId_in: [ID!]
+  projectTagElementId_not_in: [ID!]
+  projectTagElementId_lt: ID
+  projectTagElementId_lte: ID
+  projectTagElementId_gt: ID
+  projectTagElementId_gte: ID
+  projectTagElementId_contains: ID
+  projectTagElementId_not_contains: ID
+  projectTagElementId_starts_with: ID
+  projectTagElementId_not_starts_with: ID
+  projectTagElementId_ends_with: ID
+  projectTagElementId_not_ends_with: ID
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [ProjectTagElementScalarWhereInput!]
+  OR: [ProjectTagElementScalarWhereInput!]
+  NOT: [ProjectTagElementScalarWhereInput!]
+}
+
+type ProjectTagElementSubscriptionPayload {
+  mutation: MutationType!
+  node: ProjectTagElement
+  updatedFields: [String!]
+  previousValues: ProjectTagElementPreviousValues
+}
+
+input ProjectTagElementSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ProjectTagElementWhereInput
+  AND: [ProjectTagElementSubscriptionWhereInput!]
+  OR: [ProjectTagElementSubscriptionWhereInput!]
+  NOT: [ProjectTagElementSubscriptionWhereInput!]
+}
+
+input ProjectTagElementUpdateInput {
+  projects: ProjectUpdateOneWithoutTagInput
+  tags: TagUpdateOneWithoutProjectInput
+}
+
+input ProjectTagElementUpdateManyWithoutProjectsInput {
+  create: [ProjectTagElementCreateWithoutProjectsInput!]
+  delete: [ProjectTagElementWhereUniqueInput!]
+  connect: [ProjectTagElementWhereUniqueInput!]
+  set: [ProjectTagElementWhereUniqueInput!]
+  disconnect: [ProjectTagElementWhereUniqueInput!]
+  update: [ProjectTagElementUpdateWithWhereUniqueWithoutProjectsInput!]
+  upsert: [ProjectTagElementUpsertWithWhereUniqueWithoutProjectsInput!]
+  deleteMany: [ProjectTagElementScalarWhereInput!]
+}
+
+input ProjectTagElementUpdateManyWithoutTagsInput {
+  create: [ProjectTagElementCreateWithoutTagsInput!]
+  delete: [ProjectTagElementWhereUniqueInput!]
+  connect: [ProjectTagElementWhereUniqueInput!]
+  set: [ProjectTagElementWhereUniqueInput!]
+  disconnect: [ProjectTagElementWhereUniqueInput!]
+  update: [ProjectTagElementUpdateWithWhereUniqueWithoutTagsInput!]
+  upsert: [ProjectTagElementUpsertWithWhereUniqueWithoutTagsInput!]
+  deleteMany: [ProjectTagElementScalarWhereInput!]
+}
+
+input ProjectTagElementUpdateWithoutProjectsDataInput {
+  tags: TagUpdateOneWithoutProjectInput
+}
+
+input ProjectTagElementUpdateWithoutTagsDataInput {
+  projects: ProjectUpdateOneWithoutTagInput
+}
+
+input ProjectTagElementUpdateWithWhereUniqueWithoutProjectsInput {
+  where: ProjectTagElementWhereUniqueInput!
+  data: ProjectTagElementUpdateWithoutProjectsDataInput!
+}
+
+input ProjectTagElementUpdateWithWhereUniqueWithoutTagsInput {
+  where: ProjectTagElementWhereUniqueInput!
+  data: ProjectTagElementUpdateWithoutTagsDataInput!
+}
+
+input ProjectTagElementUpsertWithWhereUniqueWithoutProjectsInput {
+  where: ProjectTagElementWhereUniqueInput!
+  update: ProjectTagElementUpdateWithoutProjectsDataInput!
+  create: ProjectTagElementCreateWithoutProjectsInput!
+}
+
+input ProjectTagElementUpsertWithWhereUniqueWithoutTagsInput {
+  where: ProjectTagElementWhereUniqueInput!
+  update: ProjectTagElementUpdateWithoutTagsDataInput!
+  create: ProjectTagElementCreateWithoutTagsInput!
+}
+
+input ProjectTagElementWhereInput {
+  projectTagElementId: ID
+  projectTagElementId_not: ID
+  projectTagElementId_in: [ID!]
+  projectTagElementId_not_in: [ID!]
+  projectTagElementId_lt: ID
+  projectTagElementId_lte: ID
+  projectTagElementId_gt: ID
+  projectTagElementId_gte: ID
+  projectTagElementId_contains: ID
+  projectTagElementId_not_contains: ID
+  projectTagElementId_starts_with: ID
+  projectTagElementId_not_starts_with: ID
+  projectTagElementId_ends_with: ID
+  projectTagElementId_not_ends_with: ID
+  projects: ProjectWhereInput
+  tags: TagWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [ProjectTagElementWhereInput!]
+  OR: [ProjectTagElementWhereInput!]
+  NOT: [ProjectTagElementWhereInput!]
+}
+
+input ProjectTagElementWhereUniqueInput {
+  projectTagElementId: ID
+}
+
+input ProjectUpdateInput {
+  name: String
+  tag: ProjectTagElementUpdateManyWithoutProjectsInput
+  notes: NoteUpdateManyWithoutProjectInput
+}
+
+input ProjectUpdateManyMutationInput {
+  name: String
+}
+
+input ProjectUpdateOneRequiredWithoutNotesInput {
+  create: ProjectCreateWithoutNotesInput
+  update: ProjectUpdateWithoutNotesDataInput
+  upsert: ProjectUpsertWithoutNotesInput
+  connect: ProjectWhereUniqueInput
+}
+
+input ProjectUpdateOneWithoutTagInput {
+  create: ProjectCreateWithoutTagInput
+  update: ProjectUpdateWithoutTagDataInput
+  upsert: ProjectUpsertWithoutTagInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: ProjectWhereUniqueInput
+}
+
+input ProjectUpdateWithoutNotesDataInput {
+  name: String
+  tag: ProjectTagElementUpdateManyWithoutProjectsInput
+}
+
+input ProjectUpdateWithoutTagDataInput {
+  name: String
+  notes: NoteUpdateManyWithoutProjectInput
+}
+
+input ProjectUpsertWithoutNotesInput {
+  update: ProjectUpdateWithoutNotesDataInput!
+  create: ProjectCreateWithoutNotesInput!
+}
+
+input ProjectUpsertWithoutTagInput {
+  update: ProjectUpdateWithoutTagDataInput!
+  create: ProjectCreateWithoutTagInput!
+}
+
+input ProjectWhereInput {
+  projectId: ID
+  projectId_not: ID
+  projectId_in: [ID!]
+  projectId_not_in: [ID!]
+  projectId_lt: ID
+  projectId_lte: ID
+  projectId_gt: ID
+  projectId_gte: ID
+  projectId_contains: ID
+  projectId_not_contains: ID
+  projectId_starts_with: ID
+  projectId_not_starts_with: ID
+  projectId_ends_with: ID
+  projectId_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  tag_every: ProjectTagElementWhereInput
+  tag_some: ProjectTagElementWhereInput
+  tag_none: ProjectTagElementWhereInput
+  notes_every: NoteWhereInput
+  notes_some: NoteWhereInput
+  notes_none: NoteWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [ProjectWhereInput!]
+  OR: [ProjectWhereInput!]
+  NOT: [ProjectWhereInput!]
+}
+
+input ProjectWhereUniqueInput {
+  projectId: ID
+  name: String
+}
+
+type Query {
+  note(where: NoteWhereUniqueInput!): Note
+  notes(where: NoteWhereInput, orderBy: NoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Note]!
+  notesConnection(where: NoteWhereInput, orderBy: NoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): NoteConnection!
+  project(where: ProjectWhereUniqueInput!): Project
+  projects(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Project]!
+  projectsConnection(where: ProjectWhereInput, orderBy: ProjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProjectConnection!
+  projectTagElement(where: ProjectTagElementWhereUniqueInput!): ProjectTagElement
+  projectTagElements(where: ProjectTagElementWhereInput, orderBy: ProjectTagElementOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProjectTagElement]!
+  projectTagElementsConnection(where: ProjectTagElementWhereInput, orderBy: ProjectTagElementOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProjectTagElementConnection!
+  tag(where: TagWhereUniqueInput!): Tag
+  tags(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Tag]!
+  tagsConnection(where: TagWhereInput, orderBy: TagOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TagConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  node(id: ID!): Node
+}
+
+type Subscription {
+  note(where: NoteSubscriptionWhereInput): NoteSubscriptionPayload
+  project(where: ProjectSubscriptionWhereInput): ProjectSubscriptionPayload
+  projectTagElement(where: ProjectTagElementSubscriptionWhereInput): ProjectTagElementSubscriptionPayload
+  tag(where: TagSubscriptionWhereInput): TagSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type Tag {
+  tagId: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isUsed: Boolean!
+  project(where: ProjectTagElementWhereInput, orderBy: ProjectTagElementOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ProjectTagElement!]
+}
+
+type TagConnection {
+  pageInfo: PageInfo!
+  edges: [TagEdge]!
+  aggregate: AggregateTag!
+}
+
+input TagCreateInput {
+  tagId: ID
+  name: String!
+  isUsed: Boolean
+  project: ProjectTagElementCreateManyWithoutTagsInput
+}
+
+input TagCreateOneWithoutProjectInput {
+  create: TagCreateWithoutProjectInput
+  connect: TagWhereUniqueInput
+}
+
+input TagCreateWithoutProjectInput {
+  tagId: ID
+  name: String!
+  isUsed: Boolean
+}
+
+type TagEdge {
+  node: Tag!
+  cursor: String!
+}
+
+enum TagOrderByInput {
+  tagId_ASC
+  tagId_DESC
+  name_ASC
+  name_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  isUsed_ASC
+  isUsed_DESC
+}
+
+type TagPreviousValues {
+  tagId: ID!
+  name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  isUsed: Boolean!
+}
+
+type TagSubscriptionPayload {
+  mutation: MutationType!
+  node: Tag
+  updatedFields: [String!]
+  previousValues: TagPreviousValues
+}
+
+input TagSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TagWhereInput
+  AND: [TagSubscriptionWhereInput!]
+  OR: [TagSubscriptionWhereInput!]
+  NOT: [TagSubscriptionWhereInput!]
+}
+
+input TagUpdateInput {
+  name: String
+  isUsed: Boolean
+  project: ProjectTagElementUpdateManyWithoutTagsInput
+}
+
+input TagUpdateManyMutationInput {
+  name: String
+  isUsed: Boolean
+}
+
+input TagUpdateOneWithoutProjectInput {
+  create: TagCreateWithoutProjectInput
+  update: TagUpdateWithoutProjectDataInput
+  upsert: TagUpsertWithoutProjectInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: TagWhereUniqueInput
+}
+
+input TagUpdateWithoutProjectDataInput {
+  name: String
+  isUsed: Boolean
+}
+
+input TagUpsertWithoutProjectInput {
+  update: TagUpdateWithoutProjectDataInput!
+  create: TagCreateWithoutProjectInput!
+}
+
+input TagWhereInput {
+  tagId: ID
+  tagId_not: ID
+  tagId_in: [ID!]
+  tagId_not_in: [ID!]
+  tagId_lt: ID
+  tagId_lte: ID
+  tagId_gt: ID
+  tagId_gte: ID
+  tagId_contains: ID
+  tagId_not_contains: ID
+  tagId_starts_with: ID
+  tagId_not_starts_with: ID
+  tagId_ends_with: ID
+  tagId_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  isUsed: Boolean
+  isUsed_not: Boolean
+  project_every: ProjectTagElementWhereInput
+  project_some: ProjectTagElementWhereInput
+  project_none: ProjectTagElementWhereInput
+  AND: [TagWhereInput!]
+  OR: [TagWhereInput!]
+  NOT: [TagWhereInput!]
+}
+
+input TagWhereUniqueInput {
+  tagId: ID
+  name: String
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  id: ID
+  name: String!
+  email: String!
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  email_ASC
+  email_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  name: String!
+  email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  NOT: [UserSubscriptionWhereInput!]
+}
+
+input UserUpdateInput {
+  name: String
+  email: String
+}
+
+input UserUpdateManyMutationInput {
+  name: String
+  email: String
+}
+
+input UserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  email: String
+}

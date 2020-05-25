@@ -262,16 +262,16 @@ export interface ClientConstructor<T> {
  */
 
 export type ProjectTagElementOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
+  | "projectTagElementId_ASC"
+  | "projectTagElementId_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC";
 
 export type NoteOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
+  | "noteId_ASC"
+  | "noteId_DESC"
   | "topic_ASC"
   | "topic_DESC"
   | "content_ASC"
@@ -282,8 +282,8 @@ export type NoteOrderByInput =
   | "updatedAt_DESC";
 
 export type ProjectOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
+  | "projectId_ASC"
+  | "projectId_DESC"
   | "name_ASC"
   | "name_DESC"
   | "createdAt_ASC"
@@ -292,8 +292,8 @@ export type ProjectOrderByInput =
   | "updatedAt_DESC";
 
 export type TagOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
+  | "tagId_ASC"
+  | "tagId_DESC"
   | "name_ASC"
   | "name_DESC"
   | "createdAt_ASC"
@@ -318,26 +318,26 @@ export type UserOrderByInput =
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export type NoteWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
+  noteId: Maybe<ID_Input>;
 }>;
 
 export interface ProjectTagElementWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  project?: Maybe<ProjectWhereInput>;
-  tag?: Maybe<TagWhereInput>;
+  projectTagElementId?: Maybe<ID_Input>;
+  projectTagElementId_not?: Maybe<ID_Input>;
+  projectTagElementId_in?: Maybe<ID_Input[] | ID_Input>;
+  projectTagElementId_not_in?: Maybe<ID_Input[] | ID_Input>;
+  projectTagElementId_lt?: Maybe<ID_Input>;
+  projectTagElementId_lte?: Maybe<ID_Input>;
+  projectTagElementId_gt?: Maybe<ID_Input>;
+  projectTagElementId_gte?: Maybe<ID_Input>;
+  projectTagElementId_contains?: Maybe<ID_Input>;
+  projectTagElementId_not_contains?: Maybe<ID_Input>;
+  projectTagElementId_starts_with?: Maybe<ID_Input>;
+  projectTagElementId_not_starts_with?: Maybe<ID_Input>;
+  projectTagElementId_ends_with?: Maybe<ID_Input>;
+  projectTagElementId_not_ends_with?: Maybe<ID_Input>;
+  projects?: Maybe<ProjectWhereInput>;
+  tags?: Maybe<TagWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -360,20 +360,20 @@ export interface ProjectTagElementWhereInput {
 }
 
 export interface ProjectWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
+  projectId?: Maybe<ID_Input>;
+  projectId_not?: Maybe<ID_Input>;
+  projectId_in?: Maybe<ID_Input[] | ID_Input>;
+  projectId_not_in?: Maybe<ID_Input[] | ID_Input>;
+  projectId_lt?: Maybe<ID_Input>;
+  projectId_lte?: Maybe<ID_Input>;
+  projectId_gt?: Maybe<ID_Input>;
+  projectId_gte?: Maybe<ID_Input>;
+  projectId_contains?: Maybe<ID_Input>;
+  projectId_not_contains?: Maybe<ID_Input>;
+  projectId_starts_with?: Maybe<ID_Input>;
+  projectId_not_starts_with?: Maybe<ID_Input>;
+  projectId_ends_with?: Maybe<ID_Input>;
+  projectId_not_ends_with?: Maybe<ID_Input>;
   name?: Maybe<String>;
   name_not?: Maybe<String>;
   name_in?: Maybe<String[] | String>;
@@ -388,9 +388,9 @@ export interface ProjectWhereInput {
   name_not_starts_with?: Maybe<String>;
   name_ends_with?: Maybe<String>;
   name_not_ends_with?: Maybe<String>;
-  tags_every?: Maybe<ProjectTagElementWhereInput>;
-  tags_some?: Maybe<ProjectTagElementWhereInput>;
-  tags_none?: Maybe<ProjectTagElementWhereInput>;
+  tag_every?: Maybe<ProjectTagElementWhereInput>;
+  tag_some?: Maybe<ProjectTagElementWhereInput>;
+  tag_none?: Maybe<ProjectTagElementWhereInput>;
   notes_every?: Maybe<NoteWhereInput>;
   notes_some?: Maybe<NoteWhereInput>;
   notes_none?: Maybe<NoteWhereInput>;
@@ -416,20 +416,20 @@ export interface ProjectWhereInput {
 }
 
 export interface NoteWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
+  noteId?: Maybe<ID_Input>;
+  noteId_not?: Maybe<ID_Input>;
+  noteId_in?: Maybe<ID_Input[] | ID_Input>;
+  noteId_not_in?: Maybe<ID_Input[] | ID_Input>;
+  noteId_lt?: Maybe<ID_Input>;
+  noteId_lte?: Maybe<ID_Input>;
+  noteId_gt?: Maybe<ID_Input>;
+  noteId_gte?: Maybe<ID_Input>;
+  noteId_contains?: Maybe<ID_Input>;
+  noteId_not_contains?: Maybe<ID_Input>;
+  noteId_starts_with?: Maybe<ID_Input>;
+  noteId_not_starts_with?: Maybe<ID_Input>;
+  noteId_ends_with?: Maybe<ID_Input>;
+  noteId_not_ends_with?: Maybe<ID_Input>;
   topic?: Maybe<String>;
   topic_not?: Maybe<String>;
   topic_in?: Maybe<String[] | String>;
@@ -481,20 +481,20 @@ export interface NoteWhereInput {
 }
 
 export interface TagWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
+  tagId?: Maybe<ID_Input>;
+  tagId_not?: Maybe<ID_Input>;
+  tagId_in?: Maybe<ID_Input[] | ID_Input>;
+  tagId_not_in?: Maybe<ID_Input[] | ID_Input>;
+  tagId_lt?: Maybe<ID_Input>;
+  tagId_lte?: Maybe<ID_Input>;
+  tagId_gt?: Maybe<ID_Input>;
+  tagId_gte?: Maybe<ID_Input>;
+  tagId_contains?: Maybe<ID_Input>;
+  tagId_not_contains?: Maybe<ID_Input>;
+  tagId_starts_with?: Maybe<ID_Input>;
+  tagId_not_starts_with?: Maybe<ID_Input>;
+  tagId_ends_with?: Maybe<ID_Input>;
+  tagId_not_ends_with?: Maybe<ID_Input>;
   name?: Maybe<String>;
   name_not?: Maybe<String>;
   name_in?: Maybe<String[] | String>;
@@ -527,30 +527,31 @@ export interface TagWhereInput {
   updatedAt_gte?: Maybe<DateTimeInput>;
   isUsed?: Maybe<Boolean>;
   isUsed_not?: Maybe<Boolean>;
-  projects_every?: Maybe<ProjectTagElementWhereInput>;
-  projects_some?: Maybe<ProjectTagElementWhereInput>;
-  projects_none?: Maybe<ProjectTagElementWhereInput>;
+  project_every?: Maybe<ProjectTagElementWhereInput>;
+  project_some?: Maybe<ProjectTagElementWhereInput>;
+  project_none?: Maybe<ProjectTagElementWhereInput>;
   AND?: Maybe<TagWhereInput[] | TagWhereInput>;
   OR?: Maybe<TagWhereInput[] | TagWhereInput>;
   NOT?: Maybe<TagWhereInput[] | TagWhereInput>;
 }
 
 export type ProjectWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
+  projectId: Maybe<ID_Input>;
   name?: Maybe<String>;
 }>;
 
 export type ProjectTagElementWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
+  projectTagElementId: Maybe<ID_Input>;
 }>;
 
 export type TagWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
+  tagId: Maybe<ID_Input>;
   name?: Maybe<String>;
 }>;
 
 export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+  email?: Maybe<String>;
 }>;
 
 export interface UserWhereInput {
@@ -618,7 +619,7 @@ export interface UserWhereInput {
 }
 
 export interface NoteCreateInput {
-  id?: Maybe<ID_Input>;
+  noteId?: Maybe<ID_Input>;
   topic: String;
   content: String;
   project: ProjectCreateOneWithoutNotesInput;
@@ -630,33 +631,33 @@ export interface ProjectCreateOneWithoutNotesInput {
 }
 
 export interface ProjectCreateWithoutNotesInput {
-  id?: Maybe<ID_Input>;
+  projectId?: Maybe<ID_Input>;
   name: String;
-  tags?: Maybe<ProjectTagElementCreateManyWithoutProjectInput>;
+  tag?: Maybe<ProjectTagElementCreateManyWithoutProjectsInput>;
 }
 
-export interface ProjectTagElementCreateManyWithoutProjectInput {
+export interface ProjectTagElementCreateManyWithoutProjectsInput {
   create?: Maybe<
-    | ProjectTagElementCreateWithoutProjectInput[]
-    | ProjectTagElementCreateWithoutProjectInput
+    | ProjectTagElementCreateWithoutProjectsInput[]
+    | ProjectTagElementCreateWithoutProjectsInput
   >;
   connect?: Maybe<
     ProjectTagElementWhereUniqueInput[] | ProjectTagElementWhereUniqueInput
   >;
 }
 
-export interface ProjectTagElementCreateWithoutProjectInput {
-  id?: Maybe<ID_Input>;
-  tag: TagCreateOneWithoutProjectsInput;
+export interface ProjectTagElementCreateWithoutProjectsInput {
+  projectTagElementId?: Maybe<ID_Input>;
+  tags?: Maybe<TagCreateOneWithoutProjectInput>;
 }
 
-export interface TagCreateOneWithoutProjectsInput {
-  create?: Maybe<TagCreateWithoutProjectsInput>;
+export interface TagCreateOneWithoutProjectInput {
+  create?: Maybe<TagCreateWithoutProjectInput>;
   connect?: Maybe<TagWhereUniqueInput>;
 }
 
-export interface TagCreateWithoutProjectsInput {
-  id?: Maybe<ID_Input>;
+export interface TagCreateWithoutProjectInput {
+  tagId?: Maybe<ID_Input>;
   name: String;
   isUsed?: Maybe<Boolean>;
 }
@@ -676,13 +677,13 @@ export interface ProjectUpdateOneRequiredWithoutNotesInput {
 
 export interface ProjectUpdateWithoutNotesDataInput {
   name?: Maybe<String>;
-  tags?: Maybe<ProjectTagElementUpdateManyWithoutProjectInput>;
+  tag?: Maybe<ProjectTagElementUpdateManyWithoutProjectsInput>;
 }
 
-export interface ProjectTagElementUpdateManyWithoutProjectInput {
+export interface ProjectTagElementUpdateManyWithoutProjectsInput {
   create?: Maybe<
-    | ProjectTagElementCreateWithoutProjectInput[]
-    | ProjectTagElementCreateWithoutProjectInput
+    | ProjectTagElementCreateWithoutProjectsInput[]
+    | ProjectTagElementCreateWithoutProjectsInput
   >;
   delete?: Maybe<
     ProjectTagElementWhereUniqueInput[] | ProjectTagElementWhereUniqueInput
@@ -697,65 +698,67 @@ export interface ProjectTagElementUpdateManyWithoutProjectInput {
     ProjectTagElementWhereUniqueInput[] | ProjectTagElementWhereUniqueInput
   >;
   update?: Maybe<
-    | ProjectTagElementUpdateWithWhereUniqueWithoutProjectInput[]
-    | ProjectTagElementUpdateWithWhereUniqueWithoutProjectInput
+    | ProjectTagElementUpdateWithWhereUniqueWithoutProjectsInput[]
+    | ProjectTagElementUpdateWithWhereUniqueWithoutProjectsInput
   >;
   upsert?: Maybe<
-    | ProjectTagElementUpsertWithWhereUniqueWithoutProjectInput[]
-    | ProjectTagElementUpsertWithWhereUniqueWithoutProjectInput
+    | ProjectTagElementUpsertWithWhereUniqueWithoutProjectsInput[]
+    | ProjectTagElementUpsertWithWhereUniqueWithoutProjectsInput
   >;
   deleteMany?: Maybe<
     ProjectTagElementScalarWhereInput[] | ProjectTagElementScalarWhereInput
   >;
 }
 
-export interface ProjectTagElementUpdateWithWhereUniqueWithoutProjectInput {
+export interface ProjectTagElementUpdateWithWhereUniqueWithoutProjectsInput {
   where: ProjectTagElementWhereUniqueInput;
-  data: ProjectTagElementUpdateWithoutProjectDataInput;
+  data: ProjectTagElementUpdateWithoutProjectsDataInput;
 }
 
-export interface ProjectTagElementUpdateWithoutProjectDataInput {
-  tag?: Maybe<TagUpdateOneRequiredWithoutProjectsInput>;
+export interface ProjectTagElementUpdateWithoutProjectsDataInput {
+  tags?: Maybe<TagUpdateOneWithoutProjectInput>;
 }
 
-export interface TagUpdateOneRequiredWithoutProjectsInput {
-  create?: Maybe<TagCreateWithoutProjectsInput>;
-  update?: Maybe<TagUpdateWithoutProjectsDataInput>;
-  upsert?: Maybe<TagUpsertWithoutProjectsInput>;
+export interface TagUpdateOneWithoutProjectInput {
+  create?: Maybe<TagCreateWithoutProjectInput>;
+  update?: Maybe<TagUpdateWithoutProjectDataInput>;
+  upsert?: Maybe<TagUpsertWithoutProjectInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
   connect?: Maybe<TagWhereUniqueInput>;
 }
 
-export interface TagUpdateWithoutProjectsDataInput {
+export interface TagUpdateWithoutProjectDataInput {
   name?: Maybe<String>;
   isUsed?: Maybe<Boolean>;
 }
 
-export interface TagUpsertWithoutProjectsInput {
-  update: TagUpdateWithoutProjectsDataInput;
-  create: TagCreateWithoutProjectsInput;
+export interface TagUpsertWithoutProjectInput {
+  update: TagUpdateWithoutProjectDataInput;
+  create: TagCreateWithoutProjectInput;
 }
 
-export interface ProjectTagElementUpsertWithWhereUniqueWithoutProjectInput {
+export interface ProjectTagElementUpsertWithWhereUniqueWithoutProjectsInput {
   where: ProjectTagElementWhereUniqueInput;
-  update: ProjectTagElementUpdateWithoutProjectDataInput;
-  create: ProjectTagElementCreateWithoutProjectInput;
+  update: ProjectTagElementUpdateWithoutProjectsDataInput;
+  create: ProjectTagElementCreateWithoutProjectsInput;
 }
 
 export interface ProjectTagElementScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
+  projectTagElementId?: Maybe<ID_Input>;
+  projectTagElementId_not?: Maybe<ID_Input>;
+  projectTagElementId_in?: Maybe<ID_Input[] | ID_Input>;
+  projectTagElementId_not_in?: Maybe<ID_Input[] | ID_Input>;
+  projectTagElementId_lt?: Maybe<ID_Input>;
+  projectTagElementId_lte?: Maybe<ID_Input>;
+  projectTagElementId_gt?: Maybe<ID_Input>;
+  projectTagElementId_gte?: Maybe<ID_Input>;
+  projectTagElementId_contains?: Maybe<ID_Input>;
+  projectTagElementId_not_contains?: Maybe<ID_Input>;
+  projectTagElementId_starts_with?: Maybe<ID_Input>;
+  projectTagElementId_not_starts_with?: Maybe<ID_Input>;
+  projectTagElementId_ends_with?: Maybe<ID_Input>;
+  projectTagElementId_not_ends_with?: Maybe<ID_Input>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -794,9 +797,9 @@ export interface NoteUpdateManyMutationInput {
 }
 
 export interface ProjectCreateInput {
-  id?: Maybe<ID_Input>;
+  projectId?: Maybe<ID_Input>;
   name: String;
-  tags?: Maybe<ProjectTagElementCreateManyWithoutProjectInput>;
+  tag?: Maybe<ProjectTagElementCreateManyWithoutProjectsInput>;
   notes?: Maybe<NoteCreateManyWithoutProjectInput>;
 }
 
@@ -808,14 +811,14 @@ export interface NoteCreateManyWithoutProjectInput {
 }
 
 export interface NoteCreateWithoutProjectInput {
-  id?: Maybe<ID_Input>;
+  noteId?: Maybe<ID_Input>;
   topic: String;
   content: String;
 }
 
 export interface ProjectUpdateInput {
   name?: Maybe<String>;
-  tags?: Maybe<ProjectTagElementUpdateManyWithoutProjectInput>;
+  tag?: Maybe<ProjectTagElementUpdateManyWithoutProjectsInput>;
   notes?: Maybe<NoteUpdateManyWithoutProjectInput>;
 }
 
@@ -858,20 +861,20 @@ export interface NoteUpsertWithWhereUniqueWithoutProjectInput {
 }
 
 export interface NoteScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
+  noteId?: Maybe<ID_Input>;
+  noteId_not?: Maybe<ID_Input>;
+  noteId_in?: Maybe<ID_Input[] | ID_Input>;
+  noteId_not_in?: Maybe<ID_Input[] | ID_Input>;
+  noteId_lt?: Maybe<ID_Input>;
+  noteId_lte?: Maybe<ID_Input>;
+  noteId_gt?: Maybe<ID_Input>;
+  noteId_gte?: Maybe<ID_Input>;
+  noteId_contains?: Maybe<ID_Input>;
+  noteId_not_contains?: Maybe<ID_Input>;
+  noteId_starts_with?: Maybe<ID_Input>;
+  noteId_not_starts_with?: Maybe<ID_Input>;
+  noteId_ends_with?: Maybe<ID_Input>;
+  noteId_not_ends_with?: Maybe<ID_Input>;
   topic?: Maybe<String>;
   topic_not?: Maybe<String>;
   topic_in?: Maybe<String[] | String>;
@@ -936,76 +939,78 @@ export interface ProjectUpdateManyMutationInput {
 }
 
 export interface ProjectTagElementCreateInput {
-  id?: Maybe<ID_Input>;
-  project: ProjectCreateOneWithoutTagsInput;
-  tag: TagCreateOneWithoutProjectsInput;
+  projectTagElementId?: Maybe<ID_Input>;
+  projects?: Maybe<ProjectCreateOneWithoutTagInput>;
+  tags?: Maybe<TagCreateOneWithoutProjectInput>;
 }
 
-export interface ProjectCreateOneWithoutTagsInput {
-  create?: Maybe<ProjectCreateWithoutTagsInput>;
+export interface ProjectCreateOneWithoutTagInput {
+  create?: Maybe<ProjectCreateWithoutTagInput>;
   connect?: Maybe<ProjectWhereUniqueInput>;
 }
 
-export interface ProjectCreateWithoutTagsInput {
-  id?: Maybe<ID_Input>;
+export interface ProjectCreateWithoutTagInput {
+  projectId?: Maybe<ID_Input>;
   name: String;
   notes?: Maybe<NoteCreateManyWithoutProjectInput>;
 }
 
 export interface ProjectTagElementUpdateInput {
-  project?: Maybe<ProjectUpdateOneRequiredWithoutTagsInput>;
-  tag?: Maybe<TagUpdateOneRequiredWithoutProjectsInput>;
+  projects?: Maybe<ProjectUpdateOneWithoutTagInput>;
+  tags?: Maybe<TagUpdateOneWithoutProjectInput>;
 }
 
-export interface ProjectUpdateOneRequiredWithoutTagsInput {
-  create?: Maybe<ProjectCreateWithoutTagsInput>;
-  update?: Maybe<ProjectUpdateWithoutTagsDataInput>;
-  upsert?: Maybe<ProjectUpsertWithoutTagsInput>;
+export interface ProjectUpdateOneWithoutTagInput {
+  create?: Maybe<ProjectCreateWithoutTagInput>;
+  update?: Maybe<ProjectUpdateWithoutTagDataInput>;
+  upsert?: Maybe<ProjectUpsertWithoutTagInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
   connect?: Maybe<ProjectWhereUniqueInput>;
 }
 
-export interface ProjectUpdateWithoutTagsDataInput {
+export interface ProjectUpdateWithoutTagDataInput {
   name?: Maybe<String>;
   notes?: Maybe<NoteUpdateManyWithoutProjectInput>;
 }
 
-export interface ProjectUpsertWithoutTagsInput {
-  update: ProjectUpdateWithoutTagsDataInput;
-  create: ProjectCreateWithoutTagsInput;
+export interface ProjectUpsertWithoutTagInput {
+  update: ProjectUpdateWithoutTagDataInput;
+  create: ProjectCreateWithoutTagInput;
 }
 
 export interface TagCreateInput {
-  id?: Maybe<ID_Input>;
+  tagId?: Maybe<ID_Input>;
   name: String;
   isUsed?: Maybe<Boolean>;
-  projects?: Maybe<ProjectTagElementCreateManyWithoutTagInput>;
+  project?: Maybe<ProjectTagElementCreateManyWithoutTagsInput>;
 }
 
-export interface ProjectTagElementCreateManyWithoutTagInput {
+export interface ProjectTagElementCreateManyWithoutTagsInput {
   create?: Maybe<
-    | ProjectTagElementCreateWithoutTagInput[]
-    | ProjectTagElementCreateWithoutTagInput
+    | ProjectTagElementCreateWithoutTagsInput[]
+    | ProjectTagElementCreateWithoutTagsInput
   >;
   connect?: Maybe<
     ProjectTagElementWhereUniqueInput[] | ProjectTagElementWhereUniqueInput
   >;
 }
 
-export interface ProjectTagElementCreateWithoutTagInput {
-  id?: Maybe<ID_Input>;
-  project: ProjectCreateOneWithoutTagsInput;
+export interface ProjectTagElementCreateWithoutTagsInput {
+  projectTagElementId?: Maybe<ID_Input>;
+  projects?: Maybe<ProjectCreateOneWithoutTagInput>;
 }
 
 export interface TagUpdateInput {
   name?: Maybe<String>;
   isUsed?: Maybe<Boolean>;
-  projects?: Maybe<ProjectTagElementUpdateManyWithoutTagInput>;
+  project?: Maybe<ProjectTagElementUpdateManyWithoutTagsInput>;
 }
 
-export interface ProjectTagElementUpdateManyWithoutTagInput {
+export interface ProjectTagElementUpdateManyWithoutTagsInput {
   create?: Maybe<
-    | ProjectTagElementCreateWithoutTagInput[]
-    | ProjectTagElementCreateWithoutTagInput
+    | ProjectTagElementCreateWithoutTagsInput[]
+    | ProjectTagElementCreateWithoutTagsInput
   >;
   delete?: Maybe<
     ProjectTagElementWhereUniqueInput[] | ProjectTagElementWhereUniqueInput
@@ -1020,31 +1025,31 @@ export interface ProjectTagElementUpdateManyWithoutTagInput {
     ProjectTagElementWhereUniqueInput[] | ProjectTagElementWhereUniqueInput
   >;
   update?: Maybe<
-    | ProjectTagElementUpdateWithWhereUniqueWithoutTagInput[]
-    | ProjectTagElementUpdateWithWhereUniqueWithoutTagInput
+    | ProjectTagElementUpdateWithWhereUniqueWithoutTagsInput[]
+    | ProjectTagElementUpdateWithWhereUniqueWithoutTagsInput
   >;
   upsert?: Maybe<
-    | ProjectTagElementUpsertWithWhereUniqueWithoutTagInput[]
-    | ProjectTagElementUpsertWithWhereUniqueWithoutTagInput
+    | ProjectTagElementUpsertWithWhereUniqueWithoutTagsInput[]
+    | ProjectTagElementUpsertWithWhereUniqueWithoutTagsInput
   >;
   deleteMany?: Maybe<
     ProjectTagElementScalarWhereInput[] | ProjectTagElementScalarWhereInput
   >;
 }
 
-export interface ProjectTagElementUpdateWithWhereUniqueWithoutTagInput {
+export interface ProjectTagElementUpdateWithWhereUniqueWithoutTagsInput {
   where: ProjectTagElementWhereUniqueInput;
-  data: ProjectTagElementUpdateWithoutTagDataInput;
+  data: ProjectTagElementUpdateWithoutTagsDataInput;
 }
 
-export interface ProjectTagElementUpdateWithoutTagDataInput {
-  project?: Maybe<ProjectUpdateOneRequiredWithoutTagsInput>;
+export interface ProjectTagElementUpdateWithoutTagsDataInput {
+  projects?: Maybe<ProjectUpdateOneWithoutTagInput>;
 }
 
-export interface ProjectTagElementUpsertWithWhereUniqueWithoutTagInput {
+export interface ProjectTagElementUpsertWithWhereUniqueWithoutTagsInput {
   where: ProjectTagElementWhereUniqueInput;
-  update: ProjectTagElementUpdateWithoutTagDataInput;
-  create: ProjectTagElementCreateWithoutTagInput;
+  update: ProjectTagElementUpdateWithoutTagsDataInput;
+  create: ProjectTagElementCreateWithoutTagsInput;
 }
 
 export interface TagUpdateManyMutationInput {
@@ -1137,7 +1142,7 @@ export interface NodeNode {
 }
 
 export interface Note {
-  id: ID_Output;
+  noteId: ID_Output;
   topic: String;
   content: String;
   createdAt: DateTimeOutput;
@@ -1145,7 +1150,7 @@ export interface Note {
 }
 
 export interface NotePromise extends Promise<Note>, Fragmentable {
-  id: () => Promise<ID_Output>;
+  noteId: () => Promise<ID_Output>;
   topic: () => Promise<String>;
   content: () => Promise<String>;
   project: <T = ProjectPromise>() => T;
@@ -1156,7 +1161,7 @@ export interface NotePromise extends Promise<Note>, Fragmentable {
 export interface NoteSubscription
   extends Promise<AsyncIterator<Note>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
+  noteId: () => Promise<AsyncIterator<ID_Output>>;
   topic: () => Promise<AsyncIterator<String>>;
   content: () => Promise<AsyncIterator<String>>;
   project: <T = ProjectSubscription>() => T;
@@ -1167,7 +1172,7 @@ export interface NoteSubscription
 export interface NoteNullablePromise
   extends Promise<Note | null>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
+  noteId: () => Promise<ID_Output>;
   topic: () => Promise<String>;
   content: () => Promise<String>;
   project: <T = ProjectPromise>() => T;
@@ -1176,16 +1181,16 @@ export interface NoteNullablePromise
 }
 
 export interface Project {
-  id: ID_Output;
+  projectId: ID_Output;
   name: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
 export interface ProjectPromise extends Promise<Project>, Fragmentable {
-  id: () => Promise<ID_Output>;
+  projectId: () => Promise<ID_Output>;
   name: () => Promise<String>;
-  tags: <T = FragmentableArray<ProjectTagElement>>(args?: {
+  tag: <T = FragmentableArray<ProjectTagElement>>(args?: {
     where?: ProjectTagElementWhereInput;
     orderBy?: ProjectTagElementOrderByInput;
     skip?: Int;
@@ -1210,9 +1215,9 @@ export interface ProjectPromise extends Promise<Project>, Fragmentable {
 export interface ProjectSubscription
   extends Promise<AsyncIterator<Project>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
+  projectId: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
-  tags: <T = Promise<AsyncIterator<ProjectTagElementSubscription>>>(args?: {
+  tag: <T = Promise<AsyncIterator<ProjectTagElementSubscription>>>(args?: {
     where?: ProjectTagElementWhereInput;
     orderBy?: ProjectTagElementOrderByInput;
     skip?: Int;
@@ -1237,9 +1242,9 @@ export interface ProjectSubscription
 export interface ProjectNullablePromise
   extends Promise<Project | null>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
+  projectId: () => Promise<ID_Output>;
   name: () => Promise<String>;
-  tags: <T = FragmentableArray<ProjectTagElement>>(args?: {
+  tag: <T = FragmentableArray<ProjectTagElement>>(args?: {
     where?: ProjectTagElementWhereInput;
     orderBy?: ProjectTagElementOrderByInput;
     skip?: Int;
@@ -1262,7 +1267,7 @@ export interface ProjectNullablePromise
 }
 
 export interface ProjectTagElement {
-  id: ID_Output;
+  projectTagElementId: ID_Output;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -1270,9 +1275,9 @@ export interface ProjectTagElement {
 export interface ProjectTagElementPromise
   extends Promise<ProjectTagElement>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  project: <T = ProjectPromise>() => T;
-  tag: <T = TagPromise>() => T;
+  projectTagElementId: () => Promise<ID_Output>;
+  projects: <T = ProjectPromise>() => T;
+  tags: <T = TagPromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -1280,9 +1285,9 @@ export interface ProjectTagElementPromise
 export interface ProjectTagElementSubscription
   extends Promise<AsyncIterator<ProjectTagElement>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  project: <T = ProjectSubscription>() => T;
-  tag: <T = TagSubscription>() => T;
+  projectTagElementId: () => Promise<AsyncIterator<ID_Output>>;
+  projects: <T = ProjectSubscription>() => T;
+  tags: <T = TagSubscription>() => T;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -1290,15 +1295,15 @@ export interface ProjectTagElementSubscription
 export interface ProjectTagElementNullablePromise
   extends Promise<ProjectTagElement | null>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  project: <T = ProjectPromise>() => T;
-  tag: <T = TagPromise>() => T;
+  projectTagElementId: () => Promise<ID_Output>;
+  projects: <T = ProjectPromise>() => T;
+  tags: <T = TagPromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface Tag {
-  id: ID_Output;
+  tagId: ID_Output;
   name: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -1306,12 +1311,12 @@ export interface Tag {
 }
 
 export interface TagPromise extends Promise<Tag>, Fragmentable {
-  id: () => Promise<ID_Output>;
+  tagId: () => Promise<ID_Output>;
   name: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   isUsed: () => Promise<Boolean>;
-  projects: <T = FragmentableArray<ProjectTagElement>>(args?: {
+  project: <T = FragmentableArray<ProjectTagElement>>(args?: {
     where?: ProjectTagElementWhereInput;
     orderBy?: ProjectTagElementOrderByInput;
     skip?: Int;
@@ -1325,12 +1330,12 @@ export interface TagPromise extends Promise<Tag>, Fragmentable {
 export interface TagSubscription
   extends Promise<AsyncIterator<Tag>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
+  tagId: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   isUsed: () => Promise<AsyncIterator<Boolean>>;
-  projects: <T = Promise<AsyncIterator<ProjectTagElementSubscription>>>(args?: {
+  project: <T = Promise<AsyncIterator<ProjectTagElementSubscription>>>(args?: {
     where?: ProjectTagElementWhereInput;
     orderBy?: ProjectTagElementOrderByInput;
     skip?: Int;
@@ -1342,12 +1347,12 @@ export interface TagSubscription
 }
 
 export interface TagNullablePromise extends Promise<Tag | null>, Fragmentable {
-  id: () => Promise<ID_Output>;
+  tagId: () => Promise<ID_Output>;
   name: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
   isUsed: () => Promise<Boolean>;
-  projects: <T = FragmentableArray<ProjectTagElement>>(args?: {
+  project: <T = FragmentableArray<ProjectTagElement>>(args?: {
     where?: ProjectTagElementWhereInput;
     orderBy?: ProjectTagElementOrderByInput;
     skip?: Int;
@@ -1731,7 +1736,7 @@ export interface NoteSubscriptionPayloadSubscription
 }
 
 export interface NotePreviousValues {
-  id: ID_Output;
+  noteId: ID_Output;
   topic: String;
   content: String;
   createdAt: DateTimeOutput;
@@ -1741,7 +1746,7 @@ export interface NotePreviousValues {
 export interface NotePreviousValuesPromise
   extends Promise<NotePreviousValues>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
+  noteId: () => Promise<ID_Output>;
   topic: () => Promise<String>;
   content: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
@@ -1751,7 +1756,7 @@ export interface NotePreviousValuesPromise
 export interface NotePreviousValuesSubscription
   extends Promise<AsyncIterator<NotePreviousValues>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
+  noteId: () => Promise<AsyncIterator<ID_Output>>;
   topic: () => Promise<AsyncIterator<String>>;
   content: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -1784,7 +1789,7 @@ export interface ProjectSubscriptionPayloadSubscription
 }
 
 export interface ProjectPreviousValues {
-  id: ID_Output;
+  projectId: ID_Output;
   name: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -1793,7 +1798,7 @@ export interface ProjectPreviousValues {
 export interface ProjectPreviousValuesPromise
   extends Promise<ProjectPreviousValues>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
+  projectId: () => Promise<ID_Output>;
   name: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -1802,7 +1807,7 @@ export interface ProjectPreviousValuesPromise
 export interface ProjectPreviousValuesSubscription
   extends Promise<AsyncIterator<ProjectPreviousValues>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
+  projectId: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -1834,7 +1839,7 @@ export interface ProjectTagElementSubscriptionPayloadSubscription
 }
 
 export interface ProjectTagElementPreviousValues {
-  id: ID_Output;
+  projectTagElementId: ID_Output;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -1842,7 +1847,7 @@ export interface ProjectTagElementPreviousValues {
 export interface ProjectTagElementPreviousValuesPromise
   extends Promise<ProjectTagElementPreviousValues>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
+  projectTagElementId: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -1850,7 +1855,7 @@ export interface ProjectTagElementPreviousValuesPromise
 export interface ProjectTagElementPreviousValuesSubscription
   extends Promise<AsyncIterator<ProjectTagElementPreviousValues>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
+  projectTagElementId: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -1881,7 +1886,7 @@ export interface TagSubscriptionPayloadSubscription
 }
 
 export interface TagPreviousValues {
-  id: ID_Output;
+  tagId: ID_Output;
   name: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -1891,7 +1896,7 @@ export interface TagPreviousValues {
 export interface TagPreviousValuesPromise
   extends Promise<TagPreviousValues>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
+  tagId: () => Promise<ID_Output>;
   name: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -1901,7 +1906,7 @@ export interface TagPreviousValuesPromise
 export interface TagPreviousValuesSubscription
   extends Promise<AsyncIterator<TagPreviousValues>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
+  tagId: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
