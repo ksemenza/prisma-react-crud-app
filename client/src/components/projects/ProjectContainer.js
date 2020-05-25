@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useContext} from 'react'
 import axios from 'axios'
 import axiosAuth from '../../axiosAuth'
 //PROJECT QUERIES
@@ -12,9 +12,17 @@ import ProjectCard from './ProjectCard'
 import ProjectViewModal from './ProjectViewModal'
 import ProjectAddModal from './ProjectAddModal'
 
+import {ProjectProvider} from '../../context/ProjectContext'
+
 const ProjectContainer = (props) => {
 console.log("props")
 console.log(props)
+
+const projectContext = useContext(ProjectProvider)
+
+console.log(getSingleProject)
+
+console.log(viewProjectTag)
 
 useEffect(() => {
     axiosAuth()

@@ -29,8 +29,6 @@ type ProjectTagElement {
 projectTagElementId: ID! @id
 projects: Project @unique @relation(link:INLINE, name: "TagsByProject")
 tags: Tag @unique @relation(link:INLINE , name: "TagElement")
-createdAt: DateTime! @createdAt
-updatedAt: DateTime! @updatedAt
 }
 
 
